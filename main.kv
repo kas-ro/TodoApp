@@ -1,0 +1,74 @@
+TodoApp:
+
+<TodoApp>:
+    MDScreen:
+        # md_bg_color: 1, 1, 1
+        MDBoxLayout:
+            radius: [15,]
+            orientation: "vertical"
+            padding: "10dp", "0dp", "10dp", "10dp"
+            spacing: '15dp'
+
+            MDLabel:
+                adaptive_height: True
+                text:"MA LISTE DE COURSE"
+                halign: "center"
+                font_size: 30
+                color: 'white'
+                padding: '15dp'
+               
+            MDTextField:
+                id: task
+                multiline: False
+                icon_right_color_normal: "white"
+                icon_right: "clipboard-check-outline"
+                mode: 'fill'
+                size_hint_y: None
+                height: 15
+                hint_text: 'Entrer la course'
+                hint_text_color_normal: 'white'
+                helper_text: 'Course'
+                hint_text_color_focus: "white"
+                radius: [20, 0, 20, 0]
+                on_text_validate: app.add_task()
+           
+            # GridLayout:
+            #     cols: 2
+            #     size_hint_y: None
+            #     height: '50dp'
+            #     MDTextField:
+            #         id: date_text
+            #         mode: "line"
+            #         hint_text: 'La date'
+            #         line_color_normal: 0, 0, 0
+            #         radius: [0, 0, 0, 0]
+            #         hint_text_color_normal: 'white'
+            #         hint_text_color_focus: "white"
+            #         on_text_validate: app.show_date_picker()
+
+            #     MDIconButton:
+            #         icon: 'clipboard-check-outline'
+            #         icon_color: "white"
+            #         theme_icon_color: 'Custom'
+            #         on_press: app.show_date_picker()
+            MDRaisedButton:
+                id: btn_add
+                text: "AJOUTER"
+                text_color: "white"
+                font_size: 15
+                md_bg_color: 1/255, 152/255, 117/255
+                on_press: app.add_task()
+                pos_hint: {'center_x': .5,'center_y': .5}
+            MDLabel: 
+                text: "Courses"
+                adaptive_height: True
+                color: "white"
+                halign: "center"
+                font_size: 50
+            MDBoxLayout:
+                orientation: 'vertical'
+                radius: [20, 20, 20, 20]
+                md_bg_color: 55/255, 57/255, 57/255, .3
+                MDScrollView:
+                    MDList:
+                        id: list_task
